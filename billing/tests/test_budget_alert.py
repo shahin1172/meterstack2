@@ -12,7 +12,9 @@ from usage.models import Endpoint, UsageSummary
 class BudgetAlertTests(TestCase):
 
     def setUp(self):
-        self.tenant = Tenant.objects.create(name="Acme")
+        # 🟢 FIXED: Added slug="acme"
+        self.tenant = Tenant.objects.create(name="Acme", slug="acme")
+
         self.endpoint = Endpoint.objects.create(
             tenant=self.tenant,
             name="Weather API",
