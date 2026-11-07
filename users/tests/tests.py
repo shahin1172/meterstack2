@@ -85,11 +85,11 @@ class AuthenticationTests(APITestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
-
+@override_settings(ROOT_URLCONF="users.tests.urls")
 class TenantIsolationTests(APITestCase):
     """Ensure users can only access objects belonging to their own tenant."""
 
-    @override_settings(ROOT_URLCONF="users.tests.urls")
+
     def setUp(self) -> None:
         self.tenant_a = Tenant.objects.create(
             name="Tenant A", slug="tenant-a", api_key="key-a"

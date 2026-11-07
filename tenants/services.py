@@ -21,6 +21,6 @@ def create_tenant_with_admin(
         email=admin_email,
         password=admin_password,
         tenant=tenant,
-        role=User.Role.ADMIN,
+        role=User.Role.admin,
     )
     return tenant, admin
