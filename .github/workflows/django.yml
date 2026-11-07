@@ -62,14 +62,15 @@ jobs:
       run: |
         python manage.py migrate
 
-    - name: 🧪 Run Tests
-      env:
-        POSTGRES_DB: meterstack
-        POSTGRES_USER: meterstack_user
-        POSTGRES_PASSWORD: change_me
-        POSTGRES_HOST: localhost
-        POSTGRES_PORT: 5432
-        DJANGO_SECRET_KEY: "fake-secret-key-for-ci"
-        DJANGO_DEBUG: "False"
-      run: |
-        python manage.py test
+    - - name: 🧪 Run Tests
+    - env:
+    - POSTGRES_DB: meterstack
+    - POSTGRES_USER: meterstack_user
+    - POSTGRES_PASSWORD: change_me
+    - POSTGRES_HOST: localhost
+    - POSTGRES_PORT: 5432
+    - DJANGO_SECRET_KEY: "fake-secret-key-for-ci"
+    - DJANGO_DEBUG: "False"
+    - PYTHONPATH: .  # 🟢 This tells Python to look in the current folder!
+    - run: |
+    - python manage.py test billing usage tenants users core
